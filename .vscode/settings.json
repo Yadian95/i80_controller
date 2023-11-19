@@ -1,0 +1,25 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.adapterTargetName": "esp32s3",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.portWin": "COM13",
+  "files.associations": {
+    "soc_caps.h": "c",
+    "gpio.h": "c",
+    "queue.h": "c",
+    "adc_oneshot.h": "c",
+    "adc_cali_scheme.h": "c",
+    "adc_cali.h": "c",
+    "esp_log.h": "c",
+    "ff.h": "c",
+    "sdspi_host.h": "c",
+    "esp_err.h": "c",
+    "mpu6050.h": "c",
+    "task.h": "c",
+    "i2c.h": "c"
+  },
+  "idf.flashBaudRate": "460800",
+  "idf.flashType": "UART"
+}
