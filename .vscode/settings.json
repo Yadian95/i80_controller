@@ -4,7 +4,7 @@
   "idf.openOcdConfigs": [
     "board/esp32s3-builtin.cfg"
   ],
-  "idf.portWin": "COM13",
+  "idf.portWin": "COM16",
   "files.associations": {
     "soc_caps.h": "c",
     "gpio.h": "c",

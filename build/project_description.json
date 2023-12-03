@@ -1,7 +1,7 @@
 {
     "version":            "1",
     "project_name":       "i80_controller",
-    "project_version":    "1",
+    "project_version":    "1ae0b7d-dirty",
     "project_path":       "E:/workplace/ESP32_workplace/i80_controller",
     "idf_path":           "D:/Espressif/frameworks/esp-idf-v5.1.1",
     "build_dir":          "E:/workplace/ESP32_workplace/i80_controller/build",

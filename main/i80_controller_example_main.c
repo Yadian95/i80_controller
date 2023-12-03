@@ -434,6 +434,6 @@ void app_main(void)
 
         // ESP_ERROR_CHECK(mpu9250_register_write_byte(0x17, 0xBF));
         // ESP_LOGI(TAG, "R01 = %x %x", data[0], data[1]);
-        //  lv_label_set_text_fmt(Batvalue, "ADC:%.2f", (double)Bat_Adc_Value / 4096.0 * 3.3 * 2 + 0.1);
+        //   lv_label_set_text_fmt(Batvalue, "ADC:%.2f", (double)Bat_Adc_Value / 4096.0 * 3.3 * 2 + 0.1);
     }
 }

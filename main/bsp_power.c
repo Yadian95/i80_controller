@@ -3,6 +3,7 @@
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "driver/gpio.h"
+#include "driver/ledc.h"
 #include "soc/soc_caps.h"
 #include "esp_log.h"
 #include "esp_adc/adc_oneshot.h"
@@ -11,6 +12,7 @@
 #include "lvgl.h"
 
 #define EXAMPLE_POWER_IO 12
+#define EXAMPLE_STATE_IO 46
 #define EXAMPLE_KEY_POWER_IO 11
 #define EXAMPLE_ADC1_CHAN2 ADC_CHANNEL_2
 
@@ -42,6 +44,7 @@ void Bat_Adc_Init(void)
 }
 static void gpioTaskPowerIO(void *arg)
 {
+
     uint32_t ioNum = (uint32_t)arg;
     uint32_t preessCount = 0;
     while (1)
@@ -65,6 +68,45 @@ static void gpioTaskPowerIO(void *arg)
     }
 }
 
+static void stateTasks(void)
+{
+    bool IO_STATE = false;
+    bool Dir = false;
+    uint32_t Duty = 0;
+    while (1)
+    {
+#if 0
+        vTaskDelay(pdMS_TO_TICKS(50));
+        // gpio_set_level(EXAMPLE_STATE_IO, IO_STATE);
+        // ESP_LOGI(TAG, "Fade on\n");
+        ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, Duty);
+        ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+        ESP_LOGI(TAG, "Duty = %ld\n", Duty);
+        if (!Dir)
+        {
+            Duty += 300;
+        }
+        else
+        {
+            Duty -= 300;
+        }
+
+        if (Duty > 7000)
+        {
+            // Duty = 0;
+            Dir = !Dir;
+        }
+        else if (Duty == 0)
+        {
+            Dir = !Dir;
+        }
+#else
+        vTaskDelay(pdMS_TO_TICKS(600));
+        gpio_set_level(EXAMPLE_STATE_IO, IO_STATE);
+        IO_STATE = !IO_STATE;
+#endif
+    }
+}
 void bsp_power_init()
 {
     Bat_Adc_Init();
@@ -74,6 +116,12 @@ void bsp_power_init()
     ESP_ERROR_CHECK(gpio_config(&PowerIOConfig));
     gpio_set_level(EXAMPLE_POWER_IO, 1);
 
+    gpio_config_t StateIOConfig = {
+        .mode = GPIO_MODE_OUTPUT,
+        .pin_bit_mask = 1ULL << EXAMPLE_STATE_IO};
+    ESP_ERROR_CHECK(gpio_config(&StateIOConfig));
+    gpio_set_level(EXAMPLE_STATE_IO, 1);
+
     gpio_config_t KeyPowerIO = {
         .mode = GPIO_MODE_INPUT,
         .intr_type = GPIO_INTR_POSEDGE,
@@ -82,7 +130,35 @@ void bsp_power_init()
 
     gpio_install_isr_service(0);
     powerIOGpioEventQueue = xQueueCreate(10, sizeof(uint32_t));
+
     xTaskCreate(gpioTaskPowerIO, "KEY_POWERIO_Task", 2048, NULL, 10, NULL);
+#if 0
+    // 初始化呼吸灯PWM
+    ledc_timer_config_t ledc_timer = {
+        .duty_resolution = LEDC_TIMER_13_BIT,
+        .freq_hz = 5000,
+        .speed_mode = LEDC_LOW_SPEED_MODE,
+        .timer_num = LEDC_TIMER_1,
+        .clk_cfg = LEDC_AUTO_CLK,
+    };
+    ledc_timer_config(&ledc_timer);
+
+    ledc_channel_config_t channel_config = {
+        .channel = LEDC_CHANNEL_0,
+        .duty = 0,
+        .gpio_num = 46,
+        .speed_mode = LEDC_LOW_SPEED_MODE,
+        .hpoint = 0,
+        .timer_sel = LEDC_TIMER_1,
+        .flags.output_invert = 0,
+    };
+    ledc_channel_config(&channel_config);
+
+    ledc_fade_func_install(0);
+#endif
+    xTaskCreate(stateTasks, "State_Task", 4096, NULL, 10, NULL);
+
     gpio_isr_handler_add(EXAMPLE_KEY_POWER_IO, intrHandler, (void *)EXAMPLE_KEY_POWER_IO);
+
     ESP_LOGI(TAG, "Power Manage Service Install finished!\n");
 }

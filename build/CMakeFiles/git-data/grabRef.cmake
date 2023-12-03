@@ -18,7 +18,7 @@ set(HEAD_HASH)
 file(READ "E:/workplace/ESP32_workplace/i80_controller/build/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
 
 string(STRIP "${HEAD_CONTENTS}" HEAD_CONTENTS)
-set(GIT_DIR "D:/Espressif/frameworks/esp-idf-v5.1.1/.git")
+set(GIT_DIR "E:/workplace/ESP32_workplace/i80_controller/.git")
 # handle git-worktree
 if(EXISTS "${GIT_DIR}/commondir")
 	file(READ "${GIT_DIR}/commondir" GIT_DIR_NEW LIMIT 1024)
