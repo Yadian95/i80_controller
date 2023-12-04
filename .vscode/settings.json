@@ -20,7 +20,8 @@
     "task.h": "c",
     "i2c.h": "c",
     "lvgl.h": "c",
-    "numbers": "c"
+    "numbers": "c",
+    "lv_conf_kconfig.h": "c"
   },
   "idf.flashBaudRate": "460800",
   "idf.flashType": "UART",

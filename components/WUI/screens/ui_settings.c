@@ -118,9 +118,7 @@ lv_obj_set_style_text_opa(ui_dayu1, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 lv_obj_set_style_text_font(ui_dayu1, &ui_font_MiSansM, LV_PART_MAIN| LV_STATE_DEFAULT);
 
 lv_obj_add_event_cb(ui_HomeImg, ui_event_HomeImg, LV_EVENT_ALL, NULL);
-lv_obj_add_event_cb(ui_settingHeader, ui_event_settingHeader, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_Bat, ui_event_Bat, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_Time, ui_event_Time, LV_EVENT_ALL, NULL);
-lv_obj_add_event_cb(ui_settings, ui_event_settings, LV_EVENT_ALL, NULL);
 
 }

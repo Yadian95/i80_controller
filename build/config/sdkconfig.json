@@ -637,7 +637,7 @@
     "LV_USE_FS_POSIX": false,
     "LV_USE_FS_STDIO": false,
     "LV_USE_FS_WIN32": false,
-    "LV_USE_GIF": false,
+    "LV_USE_GIF": true,
     "LV_USE_GPU_ARM2D": false,
     "LV_USE_GPU_NXP_PXP": false,
     "LV_USE_GPU_NXP_VG_LITE": false,

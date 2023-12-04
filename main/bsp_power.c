@@ -123,12 +123,13 @@ static void stateTasks(void)
         CurrentBatPercentage = (CurrentBatVoltage - 3.0) / 1.2;
         lv_label_set_text_fmt(ui_valueVoltage, "%.2f v", CurrentBatVoltage);
         lv_label_set_text_fmt(ui_valueVolume, "%.2f mAh", CurrentBatPercentage * 500);
+
         lv_label_set_text_fmt(ui_LabelHeaderBatValue, "%.0f", CurrentBatPercentage * 100);
 
         lv_bar_set_value(ui_BarBAT, CurrentBatPercentage * 100, LV_ANIM_ON);
         lv_slider_set_value(ui_SliderHeaderBat, CurrentBatPercentage * 100, LV_ANIM_ON);
 
-        //我使用Git工具在T58上更新了程序
+        // 我使用Git工具在T58上更新了程序
 #endif
     }
 }

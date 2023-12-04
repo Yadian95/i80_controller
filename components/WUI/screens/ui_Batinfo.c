@@ -143,6 +143,5 @@ lv_obj_set_style_text_color(ui_valueVolume, lv_color_hex(0x808080), LV_PART_MAIN
 lv_obj_set_style_text_opa(ui_valueVolume, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 
 lv_obj_add_event_cb(ui_Panel8, ui_event_Panel8, LV_EVENT_ALL, NULL);
-lv_obj_add_event_cb(ui_Batinfo, ui_event_Batinfo, LV_EVENT_ALL, NULL);
 
 }
