@@ -65,7 +65,7 @@ $<TARGET_FILE:__idf_usb>
 $<TARGET_FILE:__idf_wifi_provisioning>
 $<TARGET_FILE:__idf_bsp_sdCard>
 $<TARGET_FILE:__idf_lvgl__lvgl>
-$<TARGET_FILE:__idf_phoneui>
+$<TARGET_FILE:__idf_WUI>
 $<TARGET_FILE:__idf_customUi>
 $<TARGET_FILE:__idf_MPU6050>
 $<TARGET_FILE:__idf_espressif__esp_lcd_touch>

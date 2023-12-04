@@ -65,7 +65,7 @@ E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/usb/libusb.a
 E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/bsp_sdCard/libbsp_sdCard.a
 E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/lvgl__lvgl/liblvgl__lvgl.a
-E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/phoneui/libphoneui.a
+E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/WUI/libWUI.a
 E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/customUi/libcustomUi.a
 E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/MPU6050/libMPU6050.a
 E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/espressif__esp_lcd_touch/libespressif__esp_lcd_touch.a

@@ -10,6 +10,14 @@
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
 #include "lvgl.h"
+#include "ui.h"
+
+extern lv_obj_t *ui_labelSampleVolume;
+extern lv_obj_t *ui_valueVoltage;
+extern lv_obj_t *ui_valueVolume;
+extern lv_obj_t *ui_BarBAT;
+extern lv_obj_t *ui_SliderHeaderBat;
+extern lv_obj_t *ui_LabelHeaderBatValue;
 
 #define EXAMPLE_POWER_IO 12
 #define EXAMPLE_STATE_IO 46
@@ -73,6 +81,8 @@ static void stateTasks(void)
     bool IO_STATE = false;
     bool Dir = false;
     uint32_t Duty = 0;
+    int Bat_Adc_Value = 0;
+    float CurrentBatVoltage = 0.0f, CurrentBatPercentage = 0.0f;
     while (1)
     {
 #if 0
@@ -104,6 +114,19 @@ static void stateTasks(void)
         vTaskDelay(pdMS_TO_TICKS(600));
         gpio_set_level(EXAMPLE_STATE_IO, IO_STATE);
         IO_STATE = !IO_STATE;
+
+        // 同时进行电池电压采样
+
+        ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, ADC_CHANNEL_2, &Bat_Adc_Value));
+
+        CurrentBatVoltage = Bat_Adc_Value * 0.0016 + 0.7527;
+        CurrentBatPercentage = (CurrentBatVoltage - 3.0) / 1.2;
+        lv_label_set_text_fmt(ui_valueVoltage, "%.2f v", CurrentBatVoltage);
+        lv_label_set_text_fmt(ui_valueVolume, "%.2f mAh", CurrentBatPercentage * 500);
+        lv_label_set_text_fmt(ui_LabelHeaderBatValue, "%.0f", CurrentBatPercentage * 100);
+
+        lv_bar_set_value(ui_BarBAT, CurrentBatPercentage * 100, LV_ANIM_ON);
+        lv_slider_set_value(ui_SliderHeaderBat, CurrentBatPercentage * 100, LV_ANIM_ON);
 #endif
     }
 }

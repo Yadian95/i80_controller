@@ -18,7 +18,9 @@
     "esp_err.h": "c",
     "mpu6050.h": "c",
     "task.h": "c",
-    "i2c.h": "c"
+    "i2c.h": "c",
+    "lvgl.h": "c",
+    "numbers": "c"
   },
   "idf.flashBaudRate": "460800",
   "idf.flashType": "UART"

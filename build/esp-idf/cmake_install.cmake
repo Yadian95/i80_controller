@@ -419,7 +419,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/phoneui/cmake_install.cmake")
+  include("E:/workplace/ESP32_workplace/i80_controller/build/esp-idf/WUI/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
