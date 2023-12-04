@@ -23,5 +23,6 @@
     "numbers": "c"
   },
   "idf.flashBaudRate": "460800",
-  "idf.flashType": "UART"
+  "idf.flashType": "UART",
+  "cmake.configureOnOpen": true
 }

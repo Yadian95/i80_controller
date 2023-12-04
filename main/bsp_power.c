@@ -127,6 +127,8 @@ static void stateTasks(void)
 
         lv_bar_set_value(ui_BarBAT, CurrentBatPercentage * 100, LV_ANIM_ON);
         lv_slider_set_value(ui_SliderHeaderBat, CurrentBatPercentage * 100, LV_ANIM_ON);
+
+        //我使用Git工具在T58上更新了程序
 #endif
     }
 }
