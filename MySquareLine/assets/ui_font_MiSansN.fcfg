@@ -1,0 +1,16 @@
+{
+  "codename": "MiSansN",
+  "ttf_path": "\\assets\\MiSans-Normal.otf",
+  "bin_path": "\\assets\\ui_font_MiSansN.bin",
+  "c_path": "\\assets\\ui_font_MiSansN.c",
+  "cfg_path": "\\assets\\ui_font_MiSansN.fcfg",
+  "size": 16,
+  "bpp": 1,
+  "letters": 5,
+  "ranges": [
+    "0x20-0x7f"
+  ],
+  "symbols": "连接相册相机时钟音乐设置WIFI天气备忘录通讯录计算器文件游戏贪吃蛇二维码蓝牙遥控器电话邮件浏览器短信关于本机日期和时间已关闭已开启",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

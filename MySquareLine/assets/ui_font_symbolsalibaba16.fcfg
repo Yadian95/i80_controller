@@ -1,0 +1,17 @@
+{
+  "codename": "symbolsalibaba16",
+  "ttf_path": "\\assets\\iconfont.ttf",
+  "bin_path": "\\assets\\ui_font_symbolsalibaba16.bin",
+  "c_path": "\\assets\\ui_font_symbolsalibaba16.c",
+  "cfg_path": "\\assets\\ui_font_symbolsalibaba16.fcfg",
+  "size": 16,
+  "bpp": 1,
+  "letters": 5,
+  "ranges": [
+    "0xe76c",
+    "0xe642"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}
