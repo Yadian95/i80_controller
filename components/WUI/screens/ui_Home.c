@@ -9,7 +9,7 @@ void ui_Home_screen_init(void)
 {
 ui_Home = lv_obj_create(NULL);
 lv_obj_clear_flag( ui_Home, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
-lv_obj_set_style_bg_img_src( ui_Home, &ui_img_1486146667, LV_PART_MAIN | LV_STATE_DEFAULT );
+lv_obj_set_style_bg_img_src( ui_Home, &ui_img_519783640, LV_PART_MAIN | LV_STATE_DEFAULT );
 
 ui_header = lv_obj_create(ui_Home);
 lv_obj_set_width( ui_header, 320);

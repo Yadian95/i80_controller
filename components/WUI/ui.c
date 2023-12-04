@@ -30,10 +30,12 @@ lv_obj_t *ui_Label1;
 // SCREEN: ui_settings
 void ui_settings_screen_init(void);
 lv_obj_t *ui_settings;
+void ui_event_settingHeader( lv_event_t * e);
 lv_obj_t *ui_settingHeader;
 void ui_event_HomeImg( lv_event_t * e);
 lv_obj_t *ui_HomeImg;
 lv_obj_t *ui_Label11;
+void ui_event_StepPannel( lv_event_t * e);
 lv_obj_t *ui_StepPannel;
 void ui_event_Bat( lv_event_t * e);
 lv_obj_t *ui_Bat;
@@ -47,6 +49,7 @@ lv_obj_t *ui_dayu1;
 
 // SCREEN: ui_Batinfo
 void ui_Batinfo_screen_init(void);
+void ui_event_Batinfo( lv_event_t * e);
 lv_obj_t *ui_Batinfo;
 void ui_event_Panel8( lv_event_t * e);
 lv_obj_t *ui_Panel8;
@@ -69,7 +72,7 @@ const lv_img_dsc_t *ui_imgset_1944395116[1] = {&ui_img_636766446};
 const lv_img_dsc_t *ui_imgset_1601800952[1] = {&ui_img_316889752};
 const lv_img_dsc_t *ui_imgset_2042809558[1] = {&ui_img_1978383688};
 const lv_img_dsc_t *ui_imgset_1798733245[1] = {&ui_img_358101685};
-const lv_img_dsc_t *ui_imgset_2089696111[1] = {&ui_img_1486146667};
+const lv_img_dsc_t *ui_imgset_750115614[1] = {&ui_img_519783640};
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
 #if LV_COLOR_DEPTH != 16
@@ -88,10 +91,23 @@ if ( event_code == LV_EVENT_CLICKED) {
       _ui_screen_change( &ui_settings, LV_SCR_LOAD_ANIM_OVER_LEFT, 500, 0, &ui_settings_screen_init);
 }
 }
+void ui_event_settingHeader( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+if ( event_code == LV_EVENT_CLICKED) {
+      _ui_screen_change( &ui_Home, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 500, 0, &ui_Home_screen_init);
+}
+}
 void ui_event_HomeImg( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_CLICKED) {
       _ui_screen_change( &ui_Home, LV_SCR_LOAD_ANIM_OVER_RIGHT, 500, 0, &ui_Home_screen_init);
+}
+}
+void ui_event_StepPannel( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+if ( event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT  ) {
+lv_indev_wait_release(lv_indev_get_act());
+      _ui_screen_change( &ui_Home, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 500, 0, &ui_Home_screen_init);
 }
 }
 void ui_event_Bat( lv_event_t * e) {
@@ -104,6 +120,13 @@ void ui_event_Time( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_CLICKED) {
       _ui_screen_change( &ui_Batinfo, LV_SCR_LOAD_ANIM_OVER_LEFT, 500, 0, &ui_Batinfo_screen_init);
+}
+}
+void ui_event_Batinfo( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+if ( event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT  ) {
+lv_indev_wait_release(lv_indev_get_act());
+      _ui_screen_change( &ui_settings, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 500, 0, &ui_settings_screen_init);
 }
 }
 void ui_event_Panel8( lv_event_t * e) {
